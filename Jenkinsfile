@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'Node18'
+    }
+
     stages {
 
         stage('Checkout Code') {
@@ -17,13 +21,13 @@ pipeline {
 
         stage('Install Playwright Browsers') {
             steps {
-                bat 'npx playwright install'
+                bat 'npx playwright install chromium'
             }
         }
 
         stage('Run Playwright Tests') {
             steps {
-                bat 'npx playwright test'
+                bat 'npx playwright test --project=chromium'
             }
         }
 
