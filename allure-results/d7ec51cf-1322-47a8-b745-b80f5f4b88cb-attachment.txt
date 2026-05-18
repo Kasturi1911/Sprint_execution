@@ -1,0 +1,22 @@
+[INFO]: Opening Parabank
+[INFO]: STEP 2: Registering User
+[INFO]: Filling Registration Form
+[INFO]: Submitting Registration
+[INFO]: Registration Successful
+[INFO]: STEP 3: Logging Out
+[INFO]: Logging Out
+[INFO]: STEP 4: Logging In
+[INFO]: Entering Login Credentials
+[INFO]: Clicking Login Button
+[INFO]: Login Successful
+[INFO]: STEP 5: Creating New Account via UI
+New Account ID: 24222
+[INFO]: Account Created Successfully - ID: 24222
+[INFO]: STEP 6: Validating Accounts Overview
+[INFO]: Validating Accounts Overview
+[INFO]: Accounts Overview Validated
+[INFO]: Account visible in Accounts Overview
+[INFO]: STEP 7: Validating account via API - ID: 24222
+[INFO]: API Response: {"id":24222,"customerId":17429,"type":"CHECKING","balance":100}
+[INFO]: API Validation Passed
+[INFO]: E2E Test Completed Successfully

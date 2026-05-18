@@ -1,0 +1,28 @@
+{
+  "nonExistentCustomerId": 999999,
+  "expectedStatusForInvalidId": 400,
+  "invalidLogin": {
+    "username": "invalidUser123",
+    "password": "wrongPassword"
+  },
+  "emptyUsername": {
+    "password": "Password@123"
+  },
+  "emptyPassword": {
+    "username": "testuser"
+  },
+  "passwordMismatch": {
+    "user": {
+      "firstName": "Kasturi",
+      "lastName": "Das",
+      "address": "Kolkata",
+      "city": "Kolkata",
+      "state": "WB",
+      "zipCode": "700001",
+      "phone": "9876543210",
+      "ssn": "123456"
+    },
+    "password": "Password@123",
+    "confirmPassword": "WrongPassword"
+  }
+}

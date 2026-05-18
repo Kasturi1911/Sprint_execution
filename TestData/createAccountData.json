@@ -1,0 +1,9 @@
+{
+  "customerId":  12434,
+  "fromAccountId": 13566,
+  "newAccountType": 0,
+  "maxApiResponseTime": 5000,
+  "maxTotalTimeFor20Requests": 15000,
+
+  "repeatCount": 5
+}

@@ -1,0 +1,23 @@
+{
+  "name": "sprint_execution",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "report:html": "npx playwright show-report",
+    "report:allure": "npx allure generate --clean -o allure-report --open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.8.0",
+    "allure-playwright": "^3.8.0"
+  },
+  "dependencies": {
+    "ajv": "^8.20.0"
+  }
+}
