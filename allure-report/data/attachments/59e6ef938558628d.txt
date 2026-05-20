@@ -1,0 +1,28 @@
+[INFO]: STEP 1: Opening Application
+[INFO]: Opening Parabank
+[INFO]: STEP 2: Registering User
+[INFO]: Filling Registration Form
+[INFO]: Submitting Registration
+Welcome user1778959898601
+
+Your account was created successfully. You are now logged in.
+[INFO]: Registration Successful
+[INFO]: STEP 3: Logging Out
+[INFO]: Logging Out
+[INFO]: STEP 4: Logging In
+[INFO]: Entering Login Credentials
+[INFO]: Clicking Login Button
+[INFO]: Login Successful
+[INFO]: STEP 5: Creating New Account via UI
+[INFO]: Selecting Account Type: SAVINGS
+[INFO]: Selecting Source Account
+[INFO]: Submitting Account Creation
+[INFO]: Account Created Successfully - ID: 20115
+[INFO]: STEP 6: Validating Accounts Overview
+[INFO]: Validating Accounts Overview
+[INFO]: Accounts Overview Validated
+[INFO]: Account visible in Accounts Overview
+[INFO]: STEP 7: Validating account via API - ID: 20115
+[INFO]: API Response: {"id":20115,"customerId":15209,"type":"SAVINGS","balance":100}
+[INFO]: API Validation Passed
+[INFO]: E2E Test Completed Successfully

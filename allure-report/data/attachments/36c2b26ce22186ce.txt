@@ -1,0 +1,2 @@
+[INFO]: Opening Parabank
+[INFO]: Filling Registration Form

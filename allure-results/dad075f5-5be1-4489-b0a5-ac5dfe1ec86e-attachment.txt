@@ -1,0 +1,1 @@
+{ id: 39429, customerId: 12434, type: 'CHECKING', balance: 0 }

@@ -1,0 +1,18 @@
+[INFO]: Opening Parabank
+[INFO]: Filling Registration Form
+[INFO]: Submitting Registration
+Welcome user1778959902269
+
+Your account was created successfully. You are now logged in.
+[INFO]: Registration Successful
+[INFO]: Logging Out
+[INFO]: Entering Login Credentials
+[INFO]: Clicking Login Button
+[INFO]: Login Successful
+[INFO]: Opening New Account Page
+[INFO]: Selecting Account Type
+[INFO]: Selecting From Account
+[INFO]: Creating New Account
+[INFO]: Account Created Successfully
+[INFO]: Validating Accounts Overview
+[INFO]: Accounts Overview Validated

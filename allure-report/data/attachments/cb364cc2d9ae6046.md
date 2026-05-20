@@ -1,0 +1,180 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: negative.spec.ts >> Parabank Negative UI Scenarios >> Login Negative Scenarios >> Empty Password Validation
+- Location: tests\negative.spec.ts:27:1
+
+# Error details
+
+```
+Error: expect(locator).toBeVisible() failed
+
+Locator: locator('text=Please enter a username and password.')
+Expected: visible
+Timeout: 15000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toBeVisible" with timeout 15000ms
+  - waiting for locator('text=Please enter a username and password.')
+
+```
+
+```yaml
+- link:
+  - /url: admin.htm
+  - img
+- link "ParaBank":
+  - /url: index.htm
+  - img "ParaBank"
+- paragraph: Experience the difference
+- list:
+  - listitem: Solutions
+  - listitem:
+    - link "About Us":
+      - /url: about.htm
+  - listitem:
+    - link "Services":
+      - /url: services.htm
+  - listitem:
+    - link "Products":
+      - /url: http://www.parasoft.com/jsp/products.jsp
+  - listitem:
+    - link "Locations":
+      - /url: http://www.parasoft.com/jsp/pr/contacts.jsp
+  - listitem:
+    - link "Admin Page":
+      - /url: admin.htm
+- list:
+  - listitem:
+    - link "home":
+      - /url: index.htm
+  - listitem:
+    - link "about":
+      - /url: about.htm
+  - listitem:
+    - link "contact":
+      - /url: contact.htm
+- heading "Customer Login" [level=2]
+- paragraph: Username
+- textbox
+- paragraph: Password
+- textbox
+- button "Log In"
+- paragraph:
+  - link "Forgot login info?":
+    - /url: lookup.htm
+- paragraph:
+  - link "Register":
+    - /url: register.htm
+- heading "Error!" [level=1]
+- paragraph: An internal error has occurred and has been logged.
+- list:
+  - listitem:
+    - link "Home":
+      - /url: index.htm
+    - text: "|"
+  - listitem:
+    - link "About Us":
+      - /url: about.htm
+    - text: "|"
+  - listitem:
+    - link "Services":
+      - /url: services.htm
+    - text: "|"
+  - listitem:
+    - link "Products":
+      - /url: http://www.parasoft.com/jsp/products.jsp
+    - text: "|"
+  - listitem:
+    - link "Locations":
+      - /url: http://www.parasoft.com/jsp/pr/contacts.jsp
+    - text: "|"
+  - listitem:
+    - link "Forum":
+      - /url: http://forums.parasoft.com/
+    - text: "|"
+  - listitem:
+    - link "Site Map":
+      - /url: sitemap.htm
+    - text: "|"
+  - listitem:
+    - link "Contact Us":
+      - /url: contact.htm
+- paragraph: © Parasoft. All rights reserved.
+- list:
+  - listitem: "Visit us at:"
+  - listitem:
+    - link "www.parasoft.com":
+      - /url: http://www.parasoft.com/
+```
+
+# Test source
+
+```ts
+  1  | import { mergeTests, expect } from '@playwright/test';
+  2  | import { test as apiTest } from '../Fixtures/apiFixture';
+  3  | import { test as uiTest } from '../Fixtures/uiFixture';
+  4  | import { JsonReader } from '../Utils/jsonReader';
+  5  | 
+  6  | const test = mergeTests(apiTest, uiTest);
+  7  | 
+  8  | const negativeData = JsonReader.readJson('TestData/negativeData.json');
+  9  | 
+  10 | test.describe('Parabank Negative UI Scenarios', () => {
+  11 | 
+  12 |   test.beforeEach(async ({ registerPage, data }) => {
+  13 |     await registerPage.openApplication(data.url);
+  14 |   });
+  15 | 
+  16 |   test.describe('Login Negative Scenarios', () => {
+  17 | test('Invalid Username and Password', async ({ loginPage, page }) => {
+  18 |   await loginPage.attemptLogin(negativeData.invalidLogin.username, negativeData.invalidLogin.password);
+  19 |   await expect(page.locator('text=The username and password could not be verified')).toBeVisible({ timeout: 15000 });
+  20 | });
+  21 | 
+  22 | test('Empty Username Validation', async ({ loginPage, page }) => {
+  23 |   await loginPage.attemptLogin('', negativeData.emptyUsername.password);
+  24 |   await expect(page.locator('text=Please enter a username and password.')).toBeVisible({ timeout: 15000 });
+  25 | });
+  26 | 
+  27 | test('Empty Password Validation', async ({ loginPage, page }) => {
+  28 |   await loginPage.attemptLogin(negativeData.emptyPassword.username, '');
+> 29 |   await expect(page.locator('text=Please enter a username and password.')).toBeVisible({ timeout: 15000 });
+     |                                                                            ^ Error: expect(locator).toBeVisible() failed
+  30 | });
+  31 | 
+  32 |   });
+  33 | 
+  34 |   test.describe('Registration Negative Scenarios', () => {
+  35 | 
+  36 |     test.beforeEach(async ({ registerPage }) => {
+  37 |       await registerPage.clickRegisterLink();
+  38 |     });
+  39 | 
+  40 |     test('Empty Registration Form Validation', async ({ registerPage, page }) => {
+  41 |       await registerPage.clickRegisterButton();
+  42 |       await expect(page.locator('#customer\\.firstName\\.errors')).toContainText('First name is required');
+  43 |       await expect(page.locator('#customer\\.lastName\\.errors')).toContainText('Last name is required');
+  44 |     });
+  45 | 
+  46 |     test('Password Mismatch Validation', async ({ registerPage, page }) => {
+  47 |       await registerPage.fillRegistrationForm({
+  48 |         ...negativeData.passwordMismatch.user,
+  49 |         username: `user${Date.now()}`,
+  50 |         password: negativeData.passwordMismatch.password,
+  51 |       });
+  52 |       await page.locator('#repeatedPassword').fill(negativeData.passwordMismatch.confirmPassword);
+  53 |       await registerPage.clickRegisterButton();
+  54 |       await expect(page.locator('#repeatedPassword\\.errors')).toContainText('Passwords did not match');
+  55 |     });
+  56 | 
+  57 |   });
+  58 | 
+  59 | });
+```

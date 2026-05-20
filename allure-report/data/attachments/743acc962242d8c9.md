@@ -1,0 +1,50 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: api.spec.ts >> ParaBank Account APIs >> Create New Account
+- Location: tests\api.spec.ts:42:7
+
+# Error details
+
+```
+Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 404
+```
+
+# Test source
+
+```ts
+  1  | import { APIResponse, expect } from "@playwright/test";
+  2  | 
+  3  | export default class Assert {
+  4  | 
+  5  |   static verifyStatusCode(
+  6  |     response: APIResponse,
+  7  |     Code: number
+  8  |   ) {
+  9  | 
+> 10 |     expect(response.status()).toBe(Code);
+     |                               ^ Error: expect(received).toBe(expected) // Object.is equality
+  11 | 
+  12 |   }
+  13 | 
+  14 |   static verifyAnyStatusCode(
+  15 |     response: APIResponse,
+  16 |     codes: number[]
+  17 |   ) {
+  18 | 
+  19 |     expect(codes).toContain(
+  20 |       response.status()
+  21 |     );
+  22 | 
+  23 |   }
+  24 | 
+  25 | }
+```

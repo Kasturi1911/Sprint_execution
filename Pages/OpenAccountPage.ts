@@ -42,9 +42,11 @@ export class OpenAccountPage {
 
  async createAccount() {
 
-await this.page.getByRole('link', { name: 'Open New Account' }).click();
 
-  await this.page.selectOption('#type', '0');
+await this.page.getByRole('link', { name: 'Open New Account' }).click();
+await this.page.waitForLoadState('networkidle');       
+await this.page.locator('#type').waitFor({ state: 'visible' });
+await this.page.selectOption('#type', '0');
 
   await this.page.locator('#fromAccountId').selectOption({ index: 0 });
 

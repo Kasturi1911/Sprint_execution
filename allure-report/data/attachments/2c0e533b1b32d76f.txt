@@ -1,0 +1,9 @@
+[INFO]: Opening Parabank
+[INFO]: Filling Registration Form
+[INFO]: Submitting Registration
+[INFO]: Registration Successful
+[INFO]: Logging Out
+[INFO]: Entering Login Credentials
+[INFO]: Clicking Login Button
+[INFO]: Login Successful
+[INFO]: Opening New Account Page
