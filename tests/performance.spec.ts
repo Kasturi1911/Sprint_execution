@@ -22,7 +22,7 @@ test.describe('Performance Lite Tests @performance', () => {
     expect(duration).toBeLessThan(createAccountData.maxApiResponseTime);
   });
 
-  test('Repeated GET accounts 20 times asynchronously', async ({ userAPI }) => {
+  test('Repeated GET accounts 5 times asynchronously', async ({ userAPI }) => {
 
     Logger.info(`Running ${createAccountData.repeatCount} async GET requests...`);
 
@@ -42,7 +42,7 @@ test.describe('Performance Lite Tests @performance', () => {
       expect(response.status()).toBe(200);
     }
 
-    expect(duration).toBeLessThan(createAccountData.maxTotalTimeFor20Requests);
+    expect(duration).toBeLessThan(createAccountData.maxTotalTimeFor5Requests);
   });
 
   test('UI page load time should be reasonable', async ({ page, data }) => {

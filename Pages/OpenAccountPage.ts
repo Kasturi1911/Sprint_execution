@@ -11,27 +11,21 @@ export class OpenAccountPage {
     Logger.info('Opening New Account Page');
      await this.page.locator('text=Open New Account').waitFor({ state: 'visible' });
 
-    await this.page.locator('text=Open New Account')
-      .click();
+     await this.page.getByRole('link', { name: 'Open New Account' }).click();
 
     Logger.info('Selecting Account Type');
 
-    await this.page.locator('#type')
-      .selectOption('1');
+    await this.page.locator('#type').selectOption('1');
 
     Logger.info('Selecting From Account');
 
-    await this.page.locator('#fromAccountId')
-      .selectOption({ index: 0 });
+    await this.page.locator('#fromAccountId').selectOption({ index: 0 });
 
     Logger.info('Creating New Account');
 
-    await this.page.locator(
-      'input[value="Open New Account"]'
-    ).click();
+    await this.page.locator('input[value="Open New Account"]').click();
 
-    await expect(this.page.locator('#openAccountResult'))
-      .toContainText('Account Opened!');
+    await expect(this.page.locator('#openAccountResult')).toContainText('Account Opened!');
 
     Logger.info('Account Created Successfully');
     //  await this.page.screenshot({
@@ -48,7 +42,7 @@ export class OpenAccountPage {
 
  async createAccount() {
 
-  await this.page.locator('text=Open New Account').click();
+await this.page.getByRole('link', { name: 'Open New Account' }).click();
 
   await this.page.selectOption('#type', '0');
 

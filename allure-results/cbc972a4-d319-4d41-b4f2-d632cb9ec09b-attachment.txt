@@ -1,0 +1,3 @@
+[INFO]: Opening Parabank
+[INFO]: STEP 2: Registering User
+[INFO]: Filling Registration Form

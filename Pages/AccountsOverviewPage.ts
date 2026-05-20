@@ -10,17 +10,13 @@ export class AccountsOverviewPage {
 
     Logger.info('Validating Accounts Overview');
 
-    await this.page.locator('text=Accounts Overview')
-      .click();
+    await this.page.locator('text=Accounts Overview').click();
 
-    await expect(
-      this.page.getByRole('heading', {
+    await expect(this.page.getByRole('heading', {
         name: 'Accounts Overview'
-      })
-    ).toBeVisible();
+      })).toBeVisible();
 
-    await expect(this.page.locator('#accountTable'))
-      .toBeVisible();
+    await expect(this.page.locator('#accountTable')).toBeVisible();
 
     Logger.info('Accounts Overview Validated');
   }

@@ -1,0 +1,2 @@
+[INFO]: Opening Parabank
+[INFO]: Attempting login with username: invalidUser123

@@ -3,7 +3,7 @@
   "fromAccountId": 13566,
   "newAccountType": 0,
   "maxApiResponseTime": 5000,
-  "maxTotalTimeFor20Requests": 15000,
+  "maxTotalTimeFor5Requests": 15000,
 
   "repeatCount": 5
 }
